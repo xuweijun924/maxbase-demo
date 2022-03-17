@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.maxnerva</groupId>
+    <artifactId>maxbase-demo</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <!-- jar -->
+        <!--<spring-boot.version>2.1.9.RELEASE</spring-boot.version>-->
+        <spring-boot.version>2.3.10.RELEASE</spring-boot.version>
+        <maxbase-common.version>1.2.14</maxbase-common.version>
+        <resource-client.version>1.1.20</resource-client.version>
+        <authorization-client.version>1.2.21</authorization-client.version>
+        <authorization-share.version>1.1.10</authorization-share.version>
+        <spring-cloud-context.version>2.1.6.RELEASE</spring-cloud-context.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <!--<knife4j-spring-boot-starter.version>2.0.5</knife4j-spring-boot-starter.version>-->
+        <knife4j-spring-boot-starter.version>2.0.8</knife4j-spring-boot-starter.version>
+        <transmittable-thread-local.version>2.12.1</transmittable-thread-local.version>
+        <log4j.version>2.17.1</log4j.version>
+        <hutool-all.version>5.7.22</hutool-all.version>
+
+        <!-- plugin -->
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!--
+            Maxbase
+        -->
+        <dependency>
+            <groupId>com.maxnerva.maxbase</groupId>
+            <artifactId>maxbase-common-dependencies</artifactId>
+            <version>${maxbase-common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.maxnerva.maxbase</groupId>
+            <artifactId>maxbase-common-util</artifactId>
+            <version>${maxbase-common.version}</version>
+        </dependency>
+
+        <!--
+            Boss
+        -->
+        <dependency>
+            <groupId>com.maxnerva</groupId>
+            <artifactId>resource-client</artifactId>
+            <version>${resource-client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.maxnerva</groupId>
+            <artifactId>authorization-client</artifactId>
+            <version>${authorization-client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.maxnerva</groupId>
+            <artifactId>authorization-share</artifactId>
+            <version>${authorization-share.version}</version>
+        </dependency>
+
+        <!--
+            Spring Boot 内置依赖
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j-to-slf4j</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!--
+            自引依赖
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+            <version>${spring-cloud-context.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>${knife4j-spring-boot-starter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>transmittable-thread-local</artifactId>
+            <version>${transmittable-thread-local.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-to-slf4j</artifactId>
+            <version>${log4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j-api</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool-all.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- 将 Mapper.xml 与 Mapper 接口放在一起 -->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*Mapper.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- SpringBoot 打包插件 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven 编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven-compiler-plugin.source}</source>
+                    <target>${maven-compiler-plugin.source}</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

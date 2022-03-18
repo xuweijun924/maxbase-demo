@@ -20,6 +20,8 @@ public interface BookService extends DataUpdateChecker {
 
     void delete(Long id);
 
+    void deleteMultiple(List<Long> idList);
+
     void update(Long id, BookUpdateDTO bookUpdateDTO);
 
     BookEntity get(Long id);

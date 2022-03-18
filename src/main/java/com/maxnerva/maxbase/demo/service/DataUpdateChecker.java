@@ -1,6 +1,11 @@
 package com.maxnerva.maxbase.demo.service;
 
+import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.collection.ListUtil;
+import cn.hutool.core.util.StrUtil;
 import com.maxnerva.maxbase.demo.common.exception.business.DataUpdateFailureException;
+
+import java.util.List;
 
 /**
  * @author Shengxiang Xu
@@ -16,9 +21,13 @@ public interface DataUpdateChecker {
      * @throws DataUpdateFailureException 当 result 为 false 时，会抛出该异常
      */
     default void checkDataUpdate(boolean result, Long id) {
+        checkDataUpdate(result, ListUtil.toList(id));
+    }
+
+    default void checkDataUpdate(boolean result, List<Long> idList) {
         if (!result) {
             // 主观异常
-            throw new DataUpdateFailureException(id);
+            throw new DataUpdateFailureException(CollectionUtil.join(idList, StrUtil.COMMA));
         }
     }
 

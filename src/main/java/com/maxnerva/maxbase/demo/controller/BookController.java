@@ -18,14 +18,16 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * 重点介绍两个注解：<br>
+ * 重点介绍几个注解：<br>
  * 1）@MustCarryToken，放在类上，表示访问该类对应的接口都需要携带 Token；<br>
  * 2）@SecurityIgnore，放在类上，表示访问该类对应的接口均不做权限校验，如果需要权限校验，就需要 @Security 的支持。
  *
@@ -83,8 +85,17 @@ public class BookController {
     @ApiOperationSupport(order = 20)
     // @Security("BOOK:DELETE")
     @DeleteMapping("{id}/delete")
-    public RestResponse<Void> delete(@NotNull @PathVariable Long id) {
+    public RestResponse<Void> delete(@NotNull @Range(min = 1L) @PathVariable Long id) {
         bookService.delete(id);
+        return RestResponse.builder();
+    }
+
+    @ApiOperation(value = "删除多本书籍")
+    @ApiOperationSupport(order = 25)
+    // @Security("BOOK:DELETE_MULTIPLE")
+    @DeleteMapping("delete-multiple")
+    public RestResponse<Void> deleteMultiple(@NotEmpty @RequestParam("ids") List<@Range(min = 1L) Long> idList) {
+        bookService.deleteMultiple(idList);
         return RestResponse.builder();
     }
 
@@ -101,7 +112,7 @@ public class BookController {
     @ApiOperationSupport(order = 30)
     // @Security("BOOK:UPDATE")
     @PutMapping("{id}/update")
-    public RestResponse<Void> update(@NotNull @PathVariable Long id,
+    public RestResponse<Void> update(@NotNull @Range(min = 1L) @PathVariable Long id,
                                      @Validated @RequestBody BookUpdateDTO bookUpdateDTO) {
         bookService.update(id, bookUpdateDTO);
         return RestResponse.builder();
@@ -120,11 +131,10 @@ public class BookController {
     @ApiOperationSupport(order = 40)
     // @Security("BOOK:GET")
     @GetMapping("{id}")
-    public RestResponse<BookEntity> get(@NotNull @PathVariable Long id) {
+    public RestResponse<BookEntity> get(@NotNull @Range(min = 1L) @PathVariable Long id) {
         BookEntity bookEntity = bookService.get(id);
         return RestResponse.<BookEntity>builder().data(bookEntity);
     }
-
 
     @ApiOperation(value = "查询所有书籍")
     @ApiOperationSupport(order = 50)

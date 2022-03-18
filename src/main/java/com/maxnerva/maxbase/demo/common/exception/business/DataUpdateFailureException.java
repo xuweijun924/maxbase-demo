@@ -8,7 +8,7 @@ import com.maxnerva.maxbase.common.exception.base.BusinessException;
  */
 public class DataUpdateFailureException extends BusinessException {
 
-    public DataUpdateFailureException(Long id) {
+    public DataUpdateFailureException(String id) {
         super(ErrorConstant.DATA_UPDATE_FAILURE,
                 "Data update failure, id: {0}",
                 id);

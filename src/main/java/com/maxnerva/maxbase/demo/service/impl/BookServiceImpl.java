@@ -13,6 +13,7 @@ import com.maxnerva.maxbase.demo.service.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -43,6 +44,12 @@ public class BookServiceImpl extends BaseService<BookDelegate, BookEntity, Long>
     @Override
     public void delete(Long id) {
         checkDataUpdate(delegate.removeById(id), id);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteMultiple(List<Long> idList) {
+        checkDataUpdate(delegate.removeByIds(idList), idList);
     }
 
     @Override

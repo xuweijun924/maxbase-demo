@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Map;
 
 /**
- * 上下文信息管理抽象类
+ * 上下文数据管理抽象类
  *
  * @author Shengxiang Xu
  * @date 3/17/2022

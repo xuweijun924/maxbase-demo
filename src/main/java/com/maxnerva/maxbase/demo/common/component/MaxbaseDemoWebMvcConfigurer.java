@@ -7,6 +7,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
+ * 应用配置，如：Interceptor，ViewResolver，MessageConverter 等。
+ *
  * @author Shengxiang Xu
  * @date 3/17/2022
  */
@@ -18,20 +20,18 @@ public class MaxbaseDemoWebMvcConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // TODO
-        // registry.addInterceptor(maxbaseDemoInterceptor)
-        //         .addPathPatterns("/**")
-        //         .excludePathPatterns(
-        //                 "/swagger-resources/**",
-        //                 "/webjars/**",
-        //                 "/v2/**",
-        //                 "/swagger-ui.html/**",
-        //                 "/favicon.ico",
-        //                 "/",
-        //                 "/csrf",
-        //                 "/error",
-        //                 "/doc.html",
-        //                 "/data/test/**");
+        registry.addInterceptor(maxbaseDemoInterceptor)
+                .addPathPatterns("/**")
+                .excludePathPatterns(
+                        "/swagger-resources/**",
+                        "/webjars/**",
+                        "/v2/**",
+                        "/swagger-ui.html/**",
+                        "/favicon.ico",
+                        "/",
+                        "/csrf",
+                        "/error",
+                        "/doc.html");
     }
 
 }

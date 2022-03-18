@@ -6,6 +6,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 /**
+ * 应用初始化逻辑
+ *
  * @author Shengxiang Xu
  * @date 3/17/2022
  */

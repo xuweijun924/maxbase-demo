@@ -4,12 +4,12 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.maxnerva.authorization.client.web.annotation.SecurityIgnore;
 import com.maxnerva.maxbase.common.base.response.RestResponse;
-import com.maxnerva.maxbase.demo.common.swagger.ExampleData;
+import com.maxnerva.maxbase.common.dao.page.PageResult;
+import com.maxnerva.maxbase.demo.common.swagger.SwaggerExampleData;
+import com.maxnerva.maxbase.demo.dao.entity.BookEntity;
 import com.maxnerva.maxbase.demo.pojo.dto.BookCreateDTO;
 import com.maxnerva.maxbase.demo.pojo.dto.BookListDTO;
 import com.maxnerva.maxbase.demo.pojo.dto.BookUpdateDTO;
-import com.maxnerva.maxbase.demo.pojo.entity.BookEntity;
-import com.maxnerva.maxbase.demo.pojo.vo.PageResult;
 import com.maxnerva.maxbase.demo.service.BookService;
 import com.maxnerva.resource.client.authentication.web.annotation.MustCarryToken;
 import io.swagger.annotations.Api;
@@ -25,6 +25,10 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
+ * 重点介绍两个注解：<br>
+ * 1）@MustCarryToken，放在类上，表示访问该类对应的接口都需要携带 Token；<br>
+ * 2）@SecurityIgnore，放在类上，表示访问该类对应的接口均不做权限校验，如果需要权限校验，就需要 @Security 的支持。
+ *
  * @author Shengxiang Xu
  * @date 3/17/2022
  */
@@ -33,14 +37,14 @@ import java.util.List;
         @ApiImplicitParam(
                 name = "Authorization",
                 value = "Access Token",
-                example = ExampleData.AUTHORIZATION,
+                example = SwaggerExampleData.AUTHORIZATION,
                 paramType = "header",
                 dataType = "string",
                 required = true),
         @ApiImplicitParam(
                 name = "Application-Code",
                 value = "Application Code",
-                example = ExampleData.APPLICATION_CODE,
+                example = SwaggerExampleData.APPLICATION_CODE,
                 paramType = "header",
                 dataType = "string",
                 required = true),
@@ -71,7 +75,7 @@ public class BookController {
             @ApiImplicitParam(
                     name = "id",
                     value = "书籍 id",
-                    example = ExampleData.BOOK_ID,
+                    example = SwaggerExampleData.BOOK_ID,
                     paramType = "path",
                     dataType = "Long",
                     required = true),
@@ -89,7 +93,7 @@ public class BookController {
             @ApiImplicitParam(
                     name = "id",
                     value = "书籍 id",
-                    example = ExampleData.BOOK_ID,
+                    example = SwaggerExampleData.BOOK_ID,
                     paramType = "path",
                     dataType = "Long",
                     required = true),
@@ -108,7 +112,7 @@ public class BookController {
             @ApiImplicitParam(
                     name = "id",
                     value = "书籍 id",
-                    example = ExampleData.BOOK_ID,
+                    example = SwaggerExampleData.BOOK_ID,
                     paramType = "path",
                     dataType = "Long",
                     required = true),

@@ -1,13 +1,13 @@
 package com.maxnerva.maxbase.demo.pojo.converter;
 
+import com.maxnerva.maxbase.demo.dao.entity.BookEntity;
 import com.maxnerva.maxbase.demo.pojo.dto.BookCreateDTO;
 import com.maxnerva.maxbase.demo.pojo.dto.BookUpdateDTO;
-import com.maxnerva.maxbase.demo.pojo.entity.BookEntity;
 import org.mapstruct.Mapper;
 
 /**
  * @author Shengxiang Xu
- * @date 3/18/2022
+ * @date 3/17/2022
  */
 @Mapper(componentModel = "spring")
 public interface BookConverter {

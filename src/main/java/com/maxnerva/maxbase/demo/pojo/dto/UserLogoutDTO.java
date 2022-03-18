@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * @author Shengxiang Xu
- * @date 3/18/2022
+ * @date 3/17/2022
  */
 @Data
 @ApiModel(description = "注销参数")

@@ -18,7 +18,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 /**
- * Swagger 配置
+ * Swagger 配置（基于 Knife4j）
  *
  * @author Shengxiang Xu
  * @date 3/17/2022

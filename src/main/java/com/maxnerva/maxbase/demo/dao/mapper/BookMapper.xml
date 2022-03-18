@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.maxnerva.maxbase.demo.mapper.BookMapper">
+<mapper namespace="com.maxnerva.maxbase.demo.dao.mapper.BookMapper">
 
-    <select id="list" resultType="com.maxnerva.maxbase.demo.pojo.entity.BookEntity">
+    <select id="list" resultType="com.maxnerva.maxbase.demo.dao.entity.BookEntity">
         SELECT
             *
         FROM

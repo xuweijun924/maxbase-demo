@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 
 /**
  * @author Shengxiang Xu
- * @date 3/18/2022
+ * @date 3/17/2022
  */
 @Mapper(componentModel = "spring")
 public interface UserConverter {

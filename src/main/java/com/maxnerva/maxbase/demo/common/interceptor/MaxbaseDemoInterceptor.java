@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Maxbase Demo 的拦截器
+ * 应用主拦截器
  *
  * @author Shengxiang Xu
  * @date 3/17/2022

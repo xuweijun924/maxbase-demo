@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * @author Shengxiang Xu
- * @date 3/18/2022
+ * @date 3/17/2022
  */
 @Data
 public class UserAccessTokenVO {

@@ -15,6 +15,8 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.constraints.NotNull;
 
 /**
+ * 应用集中配置类
+ *
  * @author Shengxiang Xu
  * @date 3/17/2022
  */

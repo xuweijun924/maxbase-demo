@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.stream.Collectors;
 
 /**
- * RequestUtil：用于Spring环境下获取原生的请求对象HttpServletRequest
+ * RequestUtil：用于 Spring 环境下获取原生的请求对象 HttpServletRequest
  *
  * @author Shengxiang Xu
  * @date 3/17/2022

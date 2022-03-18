@@ -25,9 +25,6 @@ public class PageResult<T> {
     private List<T> list;
 
     public PageResult(IPage<T> page) {
-        if (page == null) {
-            throw new IllegalArgumentException("分页对象不能为空");
-        }
         this.total = page.getTotal();
         this.pages = page.getPages();
         this.list = page.getRecords();

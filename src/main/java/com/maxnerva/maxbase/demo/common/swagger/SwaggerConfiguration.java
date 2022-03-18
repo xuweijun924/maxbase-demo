@@ -1,4 +1,4 @@
-package com.maxnerva.maxbase.demo.common.configuration;
+package com.maxnerva.maxbase.demo.common.swagger;
 
 
 import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;

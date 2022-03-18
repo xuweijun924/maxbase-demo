@@ -1,6 +1,5 @@
 package com.maxnerva.maxbase.demo.common.interceptor;
 
-import com.maxnerva.maxbase.demo.common.context.MaxbaseDemoContextHolder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -35,8 +34,7 @@ public class MaxbaseDemoInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request,
                                 HttpServletResponse response,
                                 Object handler, Exception exception) {
-        // 清理 ThreadLocal 信息
-        MaxbaseDemoContextHolder.removeAll();
+        // do something...
     }
 
 }

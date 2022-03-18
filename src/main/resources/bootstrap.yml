@@ -82,13 +82,13 @@ maxbase:
     url-prefix: ${AUTHENTICATION_URL_PREFIX:http://baasauth:10004}
     client-id: maxbase-demo
     client-secret: ${CLIENT_SECRET:maxbase-demo_secret123!@#}
-    interceptor-exclude-path-patterns: /data/user/user-token/**, /data/test/**, /doc.html
+    interceptor-exclude-path-patterns: /data/user-token/**, /data/test/**, /doc.html
   authorization:
     enabled: true
     url-prefix: ${AUTHORIZATION_URL_PREFIX:http://baasboss:10005}
     client-id: maxbase-demo
     client-secret: ${CLIENT_SECRET:maxbase-demo_secret123!@#}
-    interceptor-exclude-path-patterns: /data/user/user-token/**, /data/test/**, /doc.html
+    interceptor-exclude-path-patterns: /data/user-token/**, /data/test/**, /doc.html
   # 自定义配置
   demo:
     # 雪花算法
@@ -117,7 +117,7 @@ knife4j:
     enableSwaggerModels: false
     enableFooter: false
     enableFooterCustom: true
-    footerCustomContent: Apache License 2.0 | Copyright  2021 - [Maxverna]
+    footerCustomContent: Apache License 2.0 | Copyright 2022 - [Maxverna]
   documents:
     - group: ${maxbase.demo.swagger.group-name}
       name: 自定义描述文档

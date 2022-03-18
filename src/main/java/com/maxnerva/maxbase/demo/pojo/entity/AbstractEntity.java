@@ -1,7 +1,7 @@
 package com.maxnerva.maxbase.demo.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.maxnerva.maxbase.demo.common.context.MaxbaseDemoContextHolder;
+import com.maxnerva.maxbase.common.util.OAuth2ContextHolder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,7 +26,7 @@ public abstract class AbstractEntity<ID extends Serializable> {
     private Date lastModifiedDate;
 
     public void beforeInsertAction() {
-        Long creator = MaxbaseDemoContextHolder.getUserId();
+        Long creator = OAuth2ContextHolder.getUserId();
         if (creator == null) {
             throw new IllegalArgumentException("creator 不能为空");
         }
@@ -39,7 +39,7 @@ public abstract class AbstractEntity<ID extends Serializable> {
     }
 
     public void beforeUpdateAction() {
-        Long modifier = MaxbaseDemoContextHolder.getUserId();
+        Long modifier = OAuth2ContextHolder.getUserId();
         if (modifier == null) {
             throw new IllegalArgumentException("modifier 不能为空");
         }

@@ -8,7 +8,10 @@
         FROM
             book
         WHERE
-            book_name LIKE CONCAT('%', #{bookName}, '%')
+            1 = 1
+        <if test="bookName != null and bookName != ''">
+            AND book_name LIKE CONCAT('%', #{bookName}, '%')
+        </if>
         ORDER BY
             id DESC
     </select>

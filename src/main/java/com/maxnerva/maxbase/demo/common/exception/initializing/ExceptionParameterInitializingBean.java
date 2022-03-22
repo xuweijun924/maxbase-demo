@@ -21,7 +21,7 @@ public class ExceptionParameterInitializingBean implements InitializingBean {
         if (StrUtil.isBlank(serviceName)) {
             throw new IllegalArgumentException("${spring.application.name} must not be blank");
         }
-        // 用于配合 Maxbase-min 脚手架显示异常信息（from，用于显示异常抛出的位置）
+        // 用于配合 Maxbase-mini 脚手架显示异常信息（from，用于显示异常抛出的位置）
         SystemParameterProvider.getInstance().setServiceName(serviceName);
     }
 

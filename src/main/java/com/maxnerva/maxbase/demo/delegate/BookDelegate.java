@@ -28,7 +28,7 @@ public abstract class BookDelegate
         return getDao().insert(bookEntity) > 0;
     }
 
-    public boolean edit(BookEntity bookEntity) {
+    public boolean update(BookEntity bookEntity) {
         bookEntity.beforeUpdateAction();
         return getDao().updateById(bookEntity) > 0;
     }

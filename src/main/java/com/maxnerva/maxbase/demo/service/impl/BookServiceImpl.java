@@ -56,7 +56,7 @@ public class BookServiceImpl extends BaseService<BookDelegate, BookEntity, Long>
     public void update(Long id, BookUpdateDTO bookUpdateDTO) {
         BookEntity bookEntity = bookConverter.toBookEntity(bookUpdateDTO);
         bookEntity.setId(id);
-        checkDataUpdate(delegate.edit(bookEntity), id);
+        checkDataUpdate(delegate.update(bookEntity), id);
     }
 
     @Override

@@ -23,6 +23,7 @@ public class MaxbaseDemoInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         try {
             log.info("The MaxbaseDemoInterceptor starts execution, url: {}", request.getRequestURL());
+            // ...
             return true;
         } catch (Exception exception) {
             log.error("The MaxbaseDemoInterceptor execution error!");
@@ -34,7 +35,7 @@ public class MaxbaseDemoInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request,
                                 HttpServletResponse response,
                                 Object handler, Exception exception) {
-        // do something...
+        // ...
     }
 
 }
